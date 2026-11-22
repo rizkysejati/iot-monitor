@@ -78,7 +78,7 @@ require __DIR__ . '/../includes/header.php';
             <td><?= e($r['lokasi']) ?></td>
             <td><code><?= e(substr($r['api_key'], 0, 8)) ?>••••••••</code></td>
             <td><span class="badge <?= $r['status'] === 'aktif' ? 'ok' : 'bad' ?>"><?= e(ucfirst($r['status'])) ?></span></td>
-            <td><?= $r['terakhir_aktif'] ? e(date('d M Y H:i', strtotime($r['terakhir_aktif']))) : '-' ?></td>
+            <td><?= e(fmt_tanggal($r['terakhir_aktif'])) ?></td>
             <td class="aksi">
                 <a href="ubah.php?id=<?= (int)$r['id'] ?>">Ubah</a>
                 <form method="post" action="hapus.php" class="inline"

@@ -76,7 +76,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <button type="submit">Masuk</button>
         </form>
-        <p class="foot">Kelompok 4 - Pemrograman Web</p>
     </div>
 </body>
 </html>
