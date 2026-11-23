@@ -147,7 +147,10 @@ $akhirData = min($total, $hal * $perHal);
 </form>
 
 <!-- Data terbaru -->
-<h2 class="section-title">Data Terbaru</h2>
+<div class="judul-bar">
+    <h2 class="section-title">Data Terbaru</h2>
+    <label class="auto-refresh"><input type="checkbox" id="auto-refresh"> Segarkan otomatis (10 detik)</label>
+</div>
 <?php if (!$kartu): ?>
     <div class="card placeholder">Belum ada sensor.</div>
 <?php else: ?>
@@ -256,4 +259,5 @@ $akhirData = min($total, $hal * $perHal);
     </div>
 </div>
 
+<script src="<?= e($base) ?>/assets/js/dashboard.js"></script>
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

@@ -3,6 +3,7 @@
 // Variabel yang dibutuhkan: $v (nilai isian), $errors, $mode ('tambah' / 'ubah')
 ?>
 <form method="post" class="card form-card">
+    <?= csrf_field() ?>
     <?php if (isset($errors['umum'])): ?><div class="flash flash-err"><?= e($errors['umum']) ?></div><?php endif; ?>
 
     <div class="field">

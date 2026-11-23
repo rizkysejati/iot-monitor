@@ -3,6 +3,7 @@
 // Variabel: $v (isian), $errors, $perangkat (untuk dropdown)
 ?>
 <form method="post" class="card form-card">
+    <?= csrf_field() ?>
     <?php if (isset($errors['umum'])): ?><div class="flash flash-err"><?= e($errors['umum']) ?></div><?php endif; ?>
 
     <div class="form-grid">

@@ -1,7 +1,9 @@
 <?php
 // auth/login.php
+require __DIR__ . '/../config/app.php';        // pengaturan cookie session
 session_start();
 require __DIR__ . '/../config/database.php';
+require __DIR__ . '/../includes/csrf.php';
 
 // Kalau sudah login, tidak perlu lihat halaman login lagi
 if (isset($_SESSION['admin_id'])) {
@@ -16,7 +18,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username'] ?? '');
     $password = $_POST['password'] ?? '';
 
-    if ($username === '' || $password === '') {
+    if (!csrf_valid()) {
+        $error = 'Sesi formulir berakhir. Muat ulang halaman lalu coba lagi.';
+    } elseif ($username === '' || $password === '') {
         $error = 'Username dan password wajib diisi.';
     } else {
         try {
@@ -65,6 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php endif; ?>
 
         <form method="post" autocomplete="off">
+            <?= csrf_field() ?>
             <label for="username">Username</label>
             <input type="text" id="username" name="username"
                    value="<?= htmlspecialchars($username) ?>"

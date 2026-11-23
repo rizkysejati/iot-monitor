@@ -84,6 +84,7 @@ require __DIR__ . '/../includes/header.php';
                 <form method="post" action="hapus.php" class="inline"
                       onsubmit="return confirm('Hapus perangkat ini? Semua sensor dan data pembacaannya ikut terhapus.');">
                     <input type="hidden" name="id" value="<?= (int)$r['id'] ?>">
+                    <?= csrf_field() ?>
                     <button type="submit" class="link-danger">Hapus</button>
                 </form>
             </td>

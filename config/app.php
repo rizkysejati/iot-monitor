@@ -12,3 +12,9 @@ define('BASE_URL', ($_doc !== '' && strncasecmp($_root, $_doc, strlen($_doc)) ==
     : '/iot-monitor');   // cadangan kalau web root tidak terdeteksi
 
 unset($_root, $_doc);
+
+// Cookie session: tidak bisa dibaca JavaScript (httponly) dan tidak ikut terkirim
+// dari situs lain (samesite). Harus dipanggil sebelum session_start().
+if (session_status() === PHP_SESSION_NONE) {
+    session_set_cookie_params(['httponly' => true, 'samesite' => 'Lax']);
+}
